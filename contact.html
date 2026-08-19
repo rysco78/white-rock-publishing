@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>White Rock Books</title>
+<title>Contact — White Rock Books</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
@@ -35,36 +35,54 @@
   }
   nav a:hover { opacity: 1; }
   nav a.active { opacity: 1; border-bottom-color: #b5697a; }
-  main {
-    flex: 1;
+  main { flex: 1; display: flex; flex-direction: column; }
+  .page-header {
+    text-align: center;
+    padding: 3.5rem 2rem 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .page-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .page-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+    width: 100%;
+  }
+  .contact-blocks {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 2rem;
-    position: relative;
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
   }
-  main::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 25% 55%, rgba(181,105,122,0.14) 0%, transparent 55%),
-      radial-gradient(ellipse at 78% 25%, rgba(181,105,122,0.09) 0%, transparent 50%);
-    pointer-events: none;
+  .contact-block {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.4rem;
   }
-  .eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
+  .contact-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #b5697a;
-    margin-bottom: 2rem;
-    text-align: center;
+    margin-bottom: 0.5rem;
   }
-  .home-logo {
-    width: min(420px, 82vw);
-    display: block;
+  .contact-value {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.75;
   }
+  .contact-value a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(181,105,122,0.5);
+    transition: opacity 0.2s;
+  }
+  .contact-value a:hover { opacity: 1; }
   footer {
     text-align: center;
     padding: 1.4rem 2rem;
@@ -78,14 +96,37 @@
 </head>
 <body>
 <nav>
-  <a href="/" class="active">Home</a>
+  <a href="/">Home</a>
   <a href="/books.html">Books</a>
   <a href="/about.html">About</a>
-  <a href="/contact.html">Contact</a>
+  <a href="/contact.html" class="active">Contact</a>
 </nav>
 <main>
-  <p class="eyebrow">Dallas, TX &nbsp;·&nbsp; Est. 2026</p>
-  <img src="Logo-1-Full-Logo-White.png" alt="White Rock Books" class="home-logo">
+  <div class="page-header"><h1>Contact</h1></div>
+  <div class="page-content">
+    <div class="contact-blocks">
+      <div class="contact-block">
+        <div class="contact-label">Address</div>
+        <div class="contact-value">
+          White Rock Books LLC<br>
+          6812 Sherburne Dr.<br>
+          Dallas, TX 75231
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">
+          <a href="tel:+12144581906">214-458-1906</a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">
+          <a href="mailto:contact@whiterockbooks.co">contact@whiterockbooks.co</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 <footer>
   <a href="https://www.facebook.com/profile.php?id=61592936352268" target="_blank" rel="noopener" style="color:inherit;opacity:0.5;text-decoration:none;display:inline-block;margin-bottom:0.75rem;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">

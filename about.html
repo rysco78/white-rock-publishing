@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>White Rock Books</title>
+<title>About — White Rock Books</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
@@ -35,36 +35,35 @@
   }
   nav a:hover { opacity: 1; }
   nav a.active { opacity: 1; border-bottom-color: #b5697a; }
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 2rem;
-    position: relative;
-  }
-  main::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 25% 55%, rgba(181,105,122,0.14) 0%, transparent 55%),
-      radial-gradient(ellipse at 78% 25%, rgba(181,105,122,0.09) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  .eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #b5697a;
-    margin-bottom: 2rem;
+  main { flex: 1; display: flex; flex-direction: column; }
+  .page-header {
     text-align: center;
+    padding: 3.5rem 2rem 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
-  .home-logo {
-    width: min(420px, 82vw);
-    display: block;
+  .page-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
   }
+  .page-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+    width: 100%;
+  }
+  .about-text {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.85;
+    margin-bottom: 1.2rem;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
   footer {
     text-align: center;
     padding: 1.4rem 2rem;
@@ -78,14 +77,19 @@
 </head>
 <body>
 <nav>
-  <a href="/" class="active">Home</a>
+  <a href="/">Home</a>
   <a href="/books.html">Books</a>
-  <a href="/about.html">About</a>
+  <a href="/about.html" class="active">About</a>
   <a href="/contact.html">Contact</a>
 </nav>
 <main>
-  <p class="eyebrow">Dallas, TX &nbsp;·&nbsp; Est. 2026</p>
-  <img src="Logo-1-Full-Logo-White.png" alt="White Rock Books" class="home-logo">
+  <div class="page-header"><h1>About</h1></div>
+  <div class="page-content">
+    <div class="about-text">
+      <p>White Rock Books is an independent publishing house based in Dallas, Texas, dedicated to contemporary romance fiction. We champion stories with emotional depth, authentic voices, and characters readers won't soon forget.</p>
+      <p>White Rock Books is not accepting submissions at this time. Please check back for updates.</p>
+    </div>
+  </div>
 </main>
 <footer>
   <a href="https://www.facebook.com/profile.php?id=61592936352268" target="_blank" rel="noopener" style="color:inherit;opacity:0.5;text-decoration:none;display:inline-block;margin-bottom:0.75rem;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">
