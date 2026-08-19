@@ -3,35 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>White Rock Books — Coming Soon</title>
+<title>White Rock Books</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body {
-    height: 100%;
-  }
+  html, body { height: 100%; }
 
   body {
     background: #1c2135;
     color: #f0ece5;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: 'Arial', Helvetica, sans-serif;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
   }
 
-  main {
-    flex: 1;
+  /* ── NAV ── */
+  nav {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 1.6rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  nav a {
+    color: #f0ece5;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    cursor: pointer;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav a:hover { opacity: 1; }
+  nav a.active { opacity: 1; border-bottom-color: #b5697a; }
+
+  /* ── PAGES ── */
+  .page { display: none; flex: 1; flex-direction: column; }
+  .page.active { display: flex; }
+
+  /* ── LANDING ── */
+  #page-home {
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding: 3rem 2rem;
     position: relative;
   }
 
-  main::before {
+  #page-home::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -41,46 +66,133 @@
     pointer-events: none;
   }
 
-  .eyebrow {
+  .home-eyebrow {
     font-family: 'Arial', sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #b5697a;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
   }
 
-  .logo {
-    width: min(380px, 80vw);
-    margin-bottom: 3rem;
+  .home-logo {
+    width: min(420px, 82vw);
+    display: block;
   }
 
-  .coming-soon {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    font-style: italic;
-    opacity: 0.55;
-    letter-spacing: 0.06em;
-    margin-bottom: 3rem;
+  /* ── INNER PAGES ── */
+  .inner-page {
+    flex: 1;
+    flex-direction: column;
   }
 
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: #b5697a;
-    margin: 0 auto 2.5rem;
-    opacity: 0.6;
+  .page-header {
+    text-align: center;
+    padding: 3.5rem 2rem 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
-  .contact {
+  .page-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .page-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+    width: 100%;
+  }
+
+  /* ── BOOKS ── */
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .book-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-top: 3px solid #b5697a;
+    padding: 2.2rem 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    transition: background 0.2s;
   }
 
-  .contact-item {
+  .book-card:hover {
+    background: rgba(255,255,255,0.07);
+  }
+
+  .book-cover {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  .book-author {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #b5697a;
+  }
+
+  .book-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .book-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #f0ece5;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 0.6rem 1.2rem;
+    transition: border-color 0.2s, color 0.2s;
+    align-self: center;
+  }
+
+  .book-link:hover {
+    border-color: #b5697a;
+    color: #b5697a;
+  }
+
+  /* ── ABOUT ── */
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.85;
+    margin-bottom: 1.2rem;
+    max-width: 65ch;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* ── CONTACT ── */
+  .contact-blocks {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 2rem;
+  }
+
+  .contact-block {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.4rem;
   }
 
   .contact-label {
@@ -89,13 +201,14 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #b5697a;
+    margin-bottom: 0.5rem;
   }
 
   .contact-value {
     font-family: 'Arial', sans-serif;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
     opacity: 0.75;
-    line-height: 1.5;
   }
 
   .contact-value a {
@@ -106,48 +219,121 @@
     transition: opacity 0.2s;
   }
 
-  .contact-value a:hover {
-    opacity: 1;
-  }
+  .contact-value a:hover { opacity: 1; }
 
+  /* ── FOOTER ── */
   footer {
     text-align: center;
-    padding: 1.5rem 2rem;
+    padding: 1.4rem 2rem;
     font-family: 'Arial', sans-serif;
     font-size: 0.68rem;
     letter-spacing: 0.08em;
     opacity: 0.3;
     border-top: 1px solid rgba(255,255,255,0.07);
   }
+
+  @media (max-width: 500px) {
+    nav { gap: 1.5rem; }
+  }
 </style>
 </head>
 <body>
 
-<main>
-  <p class="eyebrow">Dallas, TX &nbsp;·&nbsp; Est. 2026</p>
-  <img src="Logo-1-Full-Logo-White.png" alt="White Rock Books" class="logo">
-  <div class="divider"></div>
-  <div class="contact">
-    <div class="contact-item">
-      <span class="contact-label">Address</span>
-      <span class="contact-value">
-        White Rock Books LLC<br>
-        6812 Sherburne Dr.<br>
-        Dallas, TX 75231
-      </span>
-    </div>
-    <div class="contact-item">
-      <span class="contact-label">Contact</span>
-      <span class="contact-value">
-        <a href="mailto:contact@whiterockbooks.co">contact@whiterockbooks.co</a>
-      </span>
+<nav>
+  <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
+  <a onclick="showPage('books')" id="nav-books">Books</a>
+  <a onclick="showPage('about')" id="nav-about">About</a>
+  <a onclick="showPage('contact')" id="nav-contact">Contact</a>
+</nav>
+
+<!-- LANDING -->
+<div class="page active" id="page-home">
+  <p class="home-eyebrow">Dallas, TX &nbsp;·&nbsp; Est. 2026</p>
+  <img src="Logo-1-Full-Logo-White.png" alt="White Rock Books" class="home-logo">
+</div>
+
+<!-- BOOKS -->
+<div class="page inner-page" id="page-books">
+  <div class="page-header">
+    <h1>Books</h1>
+  </div>
+  <div class="page-content">
+    <div class="books-grid">
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/710iLi5azBL._SY522_.jpg" alt="Fallin' Tides cover" class="book-cover">
+        <span class="book-author">Tori Ford</span>
+        <h2 class="book-title">Fallin' Tides</h2>
+        <a class="book-link" href="https://www.amazon.com/Fallin-Tides-Holly-River-Book/dp/B0H15GVQDM/r" target="_blank" rel="noopener">View on Amazon</a>
+      </div>
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/61v3ENZUyPL._SY522_.jpg" alt="Burnin' Tides cover" class="book-cover">
+        <span class="book-author">Tori Ford</span>
+        <h2 class="book-title">Burnin' Tides</h2>
+        <a class="book-link" href="https://www.amazon.com/Burnin-Tides-Holly-River-Book-ebook/dp/B0H3BV5QTD/r" target="_blank" rel="noopener">View on Amazon</a>
+      </div>
     </div>
   </div>
-</main>
+</div>
+
+<!-- ABOUT -->
+<div class="page inner-page" id="page-about">
+  <div class="page-header">
+    <h1>About</h1>
+  </div>
+  <div class="page-content">
+    <div class="about-text">
+      <p>White Rock Books is an independent publishing house based in Dallas, Texas, dedicated to contemporary romance fiction. We champion stories with emotional depth, authentic voices, and characters readers won't soon forget.</p>
+<p>White Rock Books is not accepting submissions at this time. Please check back for updates.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="page inner-page" id="page-contact">
+  <div class="page-header">
+    <h1>Contact</h1>
+  </div>
+  <div class="page-content">
+    <div class="contact-blocks">
+      <div class="contact-block">
+        <div class="contact-label">Address</div>
+        <div class="contact-value">
+          White Rock Books LLC<br>
+          6812 Sherburne Dr.<br>
+          Dallas, TX 75231
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">
+          <a href="tel:+12144591906">214-459-1906</a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">
+          <a href="mailto:contact@whiterockbooks.co">contact@whiterockbooks.co</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
+  <a href="https://www.facebook.com/profile.php?id=61592936352268" target="_blank" rel="noopener" style="color:inherit;opacity:0.5;text-decoration:none;display:inline-block;margin-bottom:0.75rem;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+  </a><br>
   &copy; 2026 White Rock Books LLC &nbsp;|&nbsp; All Rights Reserved
 </footer>
 
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
 </body>
 </html>
