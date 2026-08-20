@@ -34,13 +34,23 @@
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
   .nav-inner {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
     position: relative;
+  }
+  .nav-logo {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+  }
+  .nav-logo img {
+    width: 32px;
+    height: auto;
   }
   .nav-social {
     position: absolute;
@@ -115,6 +125,7 @@
 <body>
 <nav>
   <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/Logo-1-Icon-Only-White.png" alt="White Rock Books"></a>
     <a href="/">Home</a>
     <a href="/books.html">Books</a>
     <a href="/about.html" class="active">About</a>
@@ -126,7 +137,6 @@
 </nav>
 <main>
   <div class="page-header">
-    <img src="/Logo-1-Icon-Only-White.png" alt="White Rock Books" class="page-logo">
     <h1>About</h1>
   </div>
   <div class="page-content">
