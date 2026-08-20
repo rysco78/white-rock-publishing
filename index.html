@@ -102,12 +102,12 @@
   }
   @media (max-width: 600px) {
     .nav-inner { justify-content: space-between; flex-wrap: wrap; }
-    .nav-logo { position: static; }
-    .nav-right { position: static; }
-    .nav-social { display: none; }
+    .nav-logo { position: static; order: 1; }
+    .nav-right { position: static; order: 2; }
     .nav-burger { display: flex; }
     .nav-links {
       display: none;
+      order: 3;
       flex-direction: column;
       align-items: center;
       width: 100%;
